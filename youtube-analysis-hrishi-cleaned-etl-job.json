@@ -1,0 +1,439 @@
+{
+	"jobConfig": {
+		"name": "youtube-analysis-hrishi-cleaned-etl-job",
+		"description": "",
+		"role": "arn:aws:iam::390402579460:role/youtube-analysis-glue-s3-role",
+		"command": "glueetl",
+		"version": "5.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 10,
+		"maxCapacity": 10,
+		"jobRunQueuingEnabled": false,
+		"maxRetries": 0,
+		"timeout": 480,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "youtube-analysis-hrishi.py",
+		"scriptLocation": "s3://aws-glue-assets-390402579460-us-east-2/scripts/",
+		"language": "python-3",
+		"spark": true,
+		"sparkConfiguration": "standard",
+		"jobParameters": [],
+		"tags": [],
+		"jobMode": "DEVELOPER_MODE",
+		"createdOn": "2025-01-22T05:32:34.566Z",
+		"developerMode": true,
+		"connectionsList": [],
+		"temporaryDirectory": "s3://aws-glue-assets-390402579460-us-east-2/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"observabilityMetrics": true,
+		"bookmark": "job-bookmark-enable",
+		"sparkPath": "s3://aws-glue-assets-390402579460-us-east-2/sparkHistoryLogs/",
+		"flexExecution": false,
+		"minFlexWorkers": null,
+		"maintenanceWindow": null
+	},
+	"dag": {
+		"node-1737537520988": {
+			"nodeId": "node-1737537520988",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1737537498220"
+			],
+			"name": "Amazon S3",
+			"generatedNodeName": "AmazonS3_node1737537520988",
+			"classification": "DataSink",
+			"type": "S3",
+			"streamingBatchInterval": 100,
+			"format": "glueparquet",
+			"compression": "snappy",
+			"path": "s3://de-youtube-cleansedbucket-hri/youtube/raw_statistics/",
+			"partitionKeys": [],
+			"schemaChangePolicy": {
+				"enableUpdateCatalog": false,
+				"updateBehavior": null,
+				"database": null,
+				"table": null
+			},
+			"updateCatalogOptions": "none",
+			"autoDataQuality": {
+				"isEnabled": true,
+				"evaluationContext": "EvaluateDataQuality_node1737524392966"
+			},
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1737523999459": {
+			"nodeId": "node-1737523999459",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [],
+			"name": "Amazon S3",
+			"generatedNodeName": "AmazonS3_node1737523999459",
+			"classification": "DataSource",
+			"type": "S3",
+			"isCatalog": false,
+			"format": "csv",
+			"paths": [
+				"s3://youtube-analysis-hrishi/youtube/raw_statistics/"
+			],
+			"compressionType": null,
+			"exclusions": [],
+			"groupFiles": null,
+			"groupSize": null,
+			"recurse": true,
+			"maxBand": null,
+			"maxFilesInBand": null,
+			"additionalOptions": {
+				"boundedSize": null,
+				"boundedFiles": null,
+				"enableSamplePath": false,
+				"samplePath": "s3://youtube-analysis-hrishi/youtube/raw_statistics/region=ca/CAvideos.csv",
+				"boundedOption": null
+			},
+			"separator": ",",
+			"escaper": "",
+			"quoteChar": "\"",
+			"multiline": null,
+			"withHeader": true,
+			"writeHeader": null,
+			"skipFirst": null,
+			"optimizePerformance": false,
+			"outputSchemas": [
+				[
+					{
+						"key": "video_id",
+						"fullPath": [
+							"video_id"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "trending_date",
+						"fullPath": [
+							"trending_date"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "title",
+						"fullPath": [
+							"title"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "channel_title",
+						"fullPath": [
+							"channel_title"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "category_id",
+						"fullPath": [
+							"category_id"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "publish_time",
+						"fullPath": [
+							"publish_time"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "tags",
+						"fullPath": [
+							"tags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "views",
+						"fullPath": [
+							"views"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "likes",
+						"fullPath": [
+							"likes"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "dislikes",
+						"fullPath": [
+							"dislikes"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "comment_count",
+						"fullPath": [
+							"comment_count"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "thumbnail_link",
+						"fullPath": [
+							"thumbnail_link"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "comments_disabled",
+						"fullPath": [
+							"comments_disabled"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ratings_disabled",
+						"fullPath": [
+							"ratings_disabled"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "video_error_or_removed",
+						"fullPath": [
+							"video_error_or_removed"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "description",
+						"fullPath": [
+							"description"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					}
+				]
+			],
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1737537498220": {
+			"nodeId": "node-1737537498220",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1737523999459"
+			],
+			"name": "Change Schema",
+			"generatedNodeName": "ChangeSchema_node1737537498220",
+			"classification": "Transform",
+			"type": "ApplyMapping",
+			"mapping": [
+				{
+					"toKey": "video_id",
+					"fromPath": [
+						"video_id"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "trending_date",
+					"fromPath": [
+						"trending_date"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "title",
+					"fromPath": [
+						"title"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "channel_title",
+					"fromPath": [
+						"channel_title"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "category_id",
+					"fromPath": [
+						"category_id"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "publish_time",
+					"fromPath": [
+						"publish_time"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "tags",
+					"fromPath": [
+						"tags"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "views",
+					"fromPath": [
+						"views"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "likes",
+					"fromPath": [
+						"likes"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "dislikes",
+					"fromPath": [
+						"dislikes"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "comment_count",
+					"fromPath": [
+						"comment_count"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "thumbnail_link",
+					"fromPath": [
+						"thumbnail_link"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "comments_disabled",
+					"fromPath": [
+						"comments_disabled"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "ratings_disabled",
+					"fromPath": [
+						"ratings_disabled"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "video_error_or_removed",
+					"fromPath": [
+						"video_error_or_removed"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "description",
+					"fromPath": [
+						"description"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		}
+	},
+	"hasBeenSaved": false,
+	"usageProfileName": null,
+	"script": "import sys\r\nfrom awsglue.transforms import *\r\nfrom awsglue.utils import getResolvedOptions\r\nfrom pyspark.context import SparkContext\r\nfrom awsglue.context import GlueContext\r\nfrom awsglue.job import Job\r\n\r\n############################### Added by Carlos ###############################\r\nfrom awsglue.dynamicframe import DynamicFrame\r\n\r\n\r\n## @params: [JOB_NAME]\r\nargs = getResolvedOptions(sys.argv, ['JOB_NAME'])\r\n\r\nsc = SparkContext()\r\nglueContext = GlueContext(sc)\r\nspark = glueContext.spark_session\r\njob = Job(glueContext)\r\njob.init(args['JOB_NAME'], args)\r\n## @type: DataSource\r\n## @args: [database = \"db_youtube_raw\", table_name = \"raw_statistics\", transformation_ctx = \"datasource0\"]\r\n## @return: datasource0\r\n## @inputs: []\r\n############################### Added by Darshil ###############################\r\npredicate_pushdown = \"region in ('ca','gb','us')\"\r\n\r\ndatasource0 = glueContext.create_dynamic_frame.from_catalog(database = \"de-youtube-raw\", table_name = \"raw_statistics\", transformation_ctx = \"datasource0\", push_down_predicate = predicate_pushdown)\r\n\r\n## @type: ApplyMapping\r\n## @args: [mapping = [(\"video_id\", \"string\", \"video_id\", \"string\"), (\"trending_date\", \"string\", \"trending_date\", \"string\"), (\"title\", \"string\", \"title\", \"string\"), (\"channel_title\", \"string\", \"channel_title\", \"string\"), (\"category_id\", \"long\", \"category_id\", \"long\"), (\"publish_time\", \"string\", \"publish_time\", \"string\"), (\"tags\", \"string\", \"tags\", \"string\"), (\"views\", \"long\", \"views\", \"long\"), (\"likes\", \"long\", \"likes\", \"long\"), (\"dislikes\", \"long\", \"dislikes\", \"long\"), (\"comment_count\", \"long\", \"comment_count\", \"long\"), (\"thumbnail_link\", \"string\", \"thumbnail_link\", \"string\"), (\"comments_disabled\", \"boolean\", \"comments_disabled\", \"boolean\"), (\"ratings_disabled\", \"boolean\", \"ratings_disabled\", \"boolean\"), (\"video_error_or_removed\", \"boolean\", \"video_error_or_removed\", \"boolean\"), (\"description\", \"string\", \"description\", \"string\"), (\"region\", \"string\", \"region\", \"string\")], transformation_ctx = \"applymapping1\"]\r\n## @return: applymapping1\r\n## @inputs: [frame = datasource0]\r\napplymapping1 = ApplyMapping.apply(frame = datasource0, mappings = [(\"video_id\", \"string\", \"video_id\", \"string\"), (\"trending_date\", \"string\", \"trending_date\", \"string\"), (\"title\", \"string\", \"title\", \"string\"), (\"channel_title\", \"string\", \"channel_title\", \"string\"), (\"category_id\", \"long\", \"category_id\", \"long\"), (\"publish_time\", \"string\", \"publish_time\", \"string\"), (\"tags\", \"string\", \"tags\", \"string\"), (\"views\", \"long\", \"views\", \"long\"), (\"likes\", \"long\", \"likes\", \"long\"), (\"dislikes\", \"long\", \"dislikes\", \"long\"), (\"comment_count\", \"long\", \"comment_count\", \"long\"), (\"thumbnail_link\", \"string\", \"thumbnail_link\", \"string\"), (\"comments_disabled\", \"boolean\", \"comments_disabled\", \"boolean\"), (\"ratings_disabled\", \"boolean\", \"ratings_disabled\", \"boolean\"), (\"video_error_or_removed\", \"boolean\", \"video_error_or_removed\", \"boolean\"), (\"description\", \"string\", \"description\", \"string\"), (\"region\", \"string\", \"region\", \"string\")], transformation_ctx = \"applymapping1\")\r\n## @type: ResolveChoice\r\n## @args: [choice = \"make_struct\", transformation_ctx = \"resolvechoice2\"]\r\n## @return: resolvechoice2\r\n## @inputs: [frame = applymapping1]\r\nresolvechoice2 = ResolveChoice.apply(frame = applymapping1, choice = \"make_struct\", transformation_ctx = \"resolvechoice2\")\r\n## @type: DropNullFields\r\n## @args: [transformation_ctx = \"dropnullfields3\"]\r\n## @return: dropnullfields3\r\n## @inputs: [frame = resolvechoice2]\r\ndropnullfields3 = DropNullFields.apply(frame = resolvechoice2, transformation_ctx = \"dropnullfields3\")\r\n## @type: DataSink\r\n## @args: [connection_type = \"s3\", connection_options = {\"path\": \"s3://bigdata-on-youtube-cleansed-euwest1-14317621-dev/youtube/raw_statistics/\"}, format = \"parquet\", transformation_ctx = \"datasink4\"]\r\n## @return: datasink4\r\n## @inputs: [frame = dropnullfields3]\r\n\r\n############################### Added by Darshil ###############################\r\n#MAKE SURE YOU COPY ONLY WHAT IS NEEDED\r\n\r\ndatasink1 = dropnullfields3.toDF().coalesce(1)\r\ndf_final_output = DynamicFrame.fromDF(datasink1, glueContext, \"df_final_output\")\r\ndatasink4 = glueContext.write_dynamic_frame.from_options(frame = df_final_output, connection_type = \"s3\", connection_options = {\"path\": \"s3://de-youtube-cleansedbucket-hri/youtube/raw_statistics/\", \"partitionKeys\": [\"region\"]}, format = \"parquet\", transformation_ctx = \"datasink4\")\r\n\r\n############################### Added by Darshil ###############################\r\njob.commit()"
+}
