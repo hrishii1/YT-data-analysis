@@ -1,4 +1,6 @@
 YouTube Data Analysis Project 🚀
+
+
 This project is a comprehensive YouTube Data Analysis Pipeline built using AWS services. The goal is to ingest, process, store, and analyze YouTube data to derive insights, leveraging the scalability and reliability of AWS cloud infrastructure. Here's an overview of the key components:
 
 Project Overview 🎯
@@ -10,7 +12,7 @@ Cloud-Based: Process and analyze data in the cloud, leveraging AWS compute and s
 Reporting: Build dashboards using Amazon QuickSight to visualize data insights interactively.
 
 Architecture Diagram 🛠️
-![Alt text]("C:\Users\hrish\Desktop\architecture.jpeg")
+![Alt text](architecture.jpeg)
 
 Workflow ⚙️
 Data Ingestion:
