@@ -15,28 +15,28 @@ Reporting: Build dashboards using Amazon QuickSight to visualize data insights i
 ![Alt text](architecture.jpeg)
 
 ## Workflow ⚙️
-# Data Ingestion:
+Data Ingestion:
 
 Data is sourced from Kaggle and uploaded to AWS S3.
 Used AWS CLI, Boto3 scripts, or direct integrations for file uploads.
 
-# Data Transformation (ETL):
+Data Transformation (ETL):
 
 AWS Glue crawlers discover raw data schema.
 AWS Lambda functions and Glue jobs process and clean the data.
 Transform data into formats like Parquet for faster querying.
 
-# Data Lake:
+Data Lake:
 
 Centralized data storage in Amazon S3 ensures all raw and processed data is accessible in a unified repository.
 Data is partitioned for efficient querying and storage.
 
-# Data Analysis:
+Data Analysis:
 
 Use Amazon Athena to run SQL queries directly on S3 data.
 Answer critical business questions (e.g., trending topics, most popular channels) using SQL queries.
 
-# Data Visualization:
+Data Visualization:
 
 Create interactive dashboards with Amazon QuickSight.
 Enable stakeholders to explore data insights visually.
