@@ -41,6 +41,10 @@ Data Visualization:
 Create interactive dashboards with Amazon QuickSight.
 Enable stakeholders to explore data insights visually.
 
+Sample visualization 
+
+![Alt text](quicksight.png)
+
 ## Features ✨
 End-to-End Pipeline: Automates ingestion, processing, and visualization.
 Scalable: Easily handles large datasets and growing data volumes.
